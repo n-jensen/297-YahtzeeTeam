@@ -8,55 +8,45 @@ namespace Yahtzee
 {
     public class Roll
     {
-        IRandom randomVal;
+           
         YahtzeeForm gameInstance;
 
-        public int[] HoldDice = { 0, 0, 0, 0, 0 }; //Hold or not hold die at index 0 = A, index 1 = B....
-
-        public int[] Dice = { 0, 0, 0, 0, 0 };
-        //Fill with DieA,DieB,DieC,DieD,DieE
-        
-        public Roll(IRandom randomVal)
+        public int[] HoldDice = { 0, 0, 0, 0, 0 };
+        public int[] DiceName = { 0, 0, 0, 0, 0 };
+        public Roll ()
         {
-            this.randomVal = randomVal;
+
         }
-
-        /*public void getHolds(int diceX, int holdIndicator)
+        public int RollDie()
         {
-            if (holdIndicator == 1)
-            {
-                HoldDice[diceX] = 1;
-            }
-            if (gameInstance.buttonPushCounter == 3)
-            {
-                foreach (int index in HoldDice)
-                {
-                    HoldDice[index] = 0;
-                }
-            }
-        }*/
+            Random random = new Random();
+            int randomHold = new int();
+            randomHold = random.Next(1, 7);
+            return randomHold;
+        }
 
         public void RollResults()
         {
+            
             if (HoldDice[0] == 0)
             {
-                Dice[0] = randomVal.Next(1, 7);
+                DiceName[0] = RollDie();
             }
             if (HoldDice[1] == 0)
             {
-                Dice[1] = randomVal.Next(1, 7);
+                DiceName[1] = RollDie();
             }
             if (HoldDice[2] == 0)
             {
-                Dice[2] = randomVal.Next(1, 7);
+                DiceName[2] = RollDie();
             }
             if (HoldDice[3] == 0)
             {
-                Dice[3] = randomVal.Next(1, 7);
+                DiceName[3] = RollDie();
             }
             if (HoldDice[4] == 0)
             {
-                Dice[4] = randomVal.Next(1, 7);
+                DiceName[4] = RollDie();
             }
         }   
     }

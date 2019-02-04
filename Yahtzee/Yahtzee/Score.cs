@@ -58,7 +58,7 @@ namespace Yahtzee
             sum = 0;
             for (int index = 0; index < 5; index ++)
             {
-                sum = sum + roll.Dice[index];
+                sum = sum + roll.DiceName[index];
             }
             //FIXME: After every 3 rolls, or every turn, renew Sum and add MORE to TotalScore
         }
@@ -67,7 +67,7 @@ namespace Yahtzee
         {
             for (int index = 0; index < 5; index++)
             {
-                totalScore = totalScore + roll.Dice[index];
+                totalScore = totalScore + roll.DiceName[index];
             }
         }
 
@@ -75,15 +75,15 @@ namespace Yahtzee
         {
             for (int index = 0; index < 5; index++)
             {
-                quantityOfEachDieNumber[roll.Dice[index] - 1]++;
+                quantityOfEachDieNumber[roll.DiceName[index] - 1]++;
                 /*FIXME: 
-                 * if (roll.Dice[index] == 1)
+                 * if (roll.DiceName[index] == 1)
                  * {    
                  *    roll.quantityOfEachDieNumber[0]++;    
                  * }
                  */
                 //FIXME: each index at number count indicates the # of 1's through 6's rolled on the dice
-                //Thus, each index for quantityOfEachDieNumber represents the Dice in order (A-E or 1-5)
+                //Thus, each index for quantityOfEachDieNumber represents the DiceName in order (A-E or 1-5)
             }
         }
 
