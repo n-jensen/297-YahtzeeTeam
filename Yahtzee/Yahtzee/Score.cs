@@ -11,12 +11,11 @@ namespace Yahtzee
         Roll roll;
 
         public int[] quantityOfEachDieNumber = { 0, 0, 0, 0, 0, 0 };
-        //Fill with number of "1" dice at index 0, number of "2" dice at index 1...
-        //quantityOfEachDieNumber counts number of dice that landed on 1,2,3,4,5 and 6
+        public int[] tempDiceValues = { 0, 0, 0, 0, 0 };
 
         public int totalScore;
         public int sum;
-        public int bonus;
+        public int bonusScore;
 
         public int onesScore;
         public int twosScore;
@@ -43,7 +42,7 @@ namespace Yahtzee
             sixesScore = 0;
             totalScore = 0;
             sum = 0;
-            bonus = 0;
+            bonusScore = 0;
             threeKindScore = 0;
             fourKindScore = 0;
             fullHouseScore = 0;
@@ -51,162 +50,180 @@ namespace Yahtzee
             largeStraightScore = 0;
             chanceScore = 0;
             yahtzeeScore = 0;
+            fillTempDiceValues(roll);
+            IterateNumberAmounts();
         }
 
-        public void Sum(Roll roll)
+        public void fillTempDiceValues(Roll roll)
+        {
+            foreach (int index in roll.DiceValues)
+            {
+                tempDiceValues[index] = roll.DiceValues[index];
+            }
+        }
+
+        public void IterateNumberAmounts()
+        {
+            for (int index = 0; index < 5; index++)
+            {
+                quantityOfEachDieNumber[tempDiceValues[index] - 1]++;
+            }
+        }
+
+        public void TotalScore(int additionalScore)
+        {
+            totalScore = totalScore + additionalScore;
+        }
+
+        public void Sum()
         {
             sum = 0;
-            for (int index = 0; index < 5; index ++)
-            {
-                sum = sum + roll.DiceName[index];
-            }
-            //FIXME: After every 3 rolls, or every turn, renew Sum and add MORE to TotalScore
-        }
-
-        public void TotalScore(Roll roll)
-        {
             for (int index = 0; index < 5; index++)
             {
-                totalScore = totalScore + roll.DiceName[index];
+                sum = sum + tempDiceValues[index];
             }
         }
 
-        public void IterateNumberAmounts(Roll roll)
+        public void Bonus()
         {
-            for (int index = 0; index < 5; index++)
+            //FIXME: If you already got a yahtzee, get an extra 50 points
+            if (yahtzeeScore == 50)
             {
-                quantityOfEachDieNumber[roll.DiceName[index] - 1]++;
-                /*FIXME: 
-                 * if (roll.DiceName[index] == 1)
-                 * {    
-                 *    roll.quantityOfEachDieNumber[0]++;    
-                 * }
-                 */
-                //FIXME: each index at number count indicates the # of 1's through 6's rolled on the dice
-                //Thus, each index for quantityOfEachDieNumber represents the DiceName in order (A-E or 1-5)
+                bonusScore = 50;
             }
         }
 
-        public void OnesThroughSixes(Roll roll)
-        {
-            onesScore = 0;
-            twosScore = 0;
-            threesScore = 0;
-            foursScore = 0;
-            fivesScore = 0;
-            sixesScore = 0;
 
+        public void Ones()
+        {
             onesScore = quantityOfEachDieNumber[0] * 1;
+        }
+
+        public void Twos()
+        {
             twosScore = quantityOfEachDieNumber[1] * 2;
+        }
+
+        public void Threes()
+        {
             threesScore = quantityOfEachDieNumber[2] * 3;
+        }
+
+        public void Fours()
+        {
             foursScore = quantityOfEachDieNumber[3] * 4;
-            fivesScore = quantityOfEachDieNumber[4] * 5;
+        }
+
+        public void Fives()
+        {
+           fivesScore = quantityOfEachDieNumber[4] * 5;
+        }
+
+        public void Sixes()
+        {
             sixesScore = quantityOfEachDieNumber[5] * 6;
         }
-          
-        public void ThreeOfAKind(Roll roll)
+
+
+        public void ThreeOfAKind()
         {
-            fourKindScore = 0;
             for (int index = 0; index < 6; index++)
             {
                 if (quantityOfEachDieNumber[index] == 3)
                 {
-                    Sum(roll);
-                    fourKindScore = sum;
+                    Sum();
+                    threeKindScore = sum;
                 }
             }
         }
 
-        public void FourOfAKind(Roll roll)
+        public void FourOfAKind()
         {
             for (int index = 0; index < 6; index++)
             {
                 if (quantityOfEachDieNumber[index] == 4)
                 {
-                    Sum(roll);
+                    Sum();
                     fourKindScore = sum;
                 }
             }
         }
 
-        public void FullHouse(Roll roll)
+        public void FullHouse()
         {
             int pairs = 0;
-            fullHouseScore = 0;
             for (int index = 0; index < 6; index++)
             {
                 if (quantityOfEachDieNumber[index] == 3)
                 {
-                    pairs = 1;
-                    //FIXME: index + 1, bc what if last if statement has a pair or a 3 
+                    pairs = pairs + 1;
                 }
-                if(quantityOfEachDieNumber[index] == 2 && pairs == 1)
+                else if (quantityOfEachDieNumber[index] == 2)
+                {
+                    pairs = pairs + 2;
+                }
+                if (pairs == 3)
                 {
                     fullHouseScore = 25;
                 }
             }
         }
 
-        public void SmallStraight(Roll roll)
+        public void SmallStraight()
         {
-            if((quantityOfEachDieNumber[0] >= 1 && quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1) 
-                || (quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1 && quantityOfEachDieNumber[5] >= 1) 
-                || (quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1 && quantityOfEachDieNumber[5] >= 1 && quantityOfEachDieNumber[6] >= 1))
+            if ((quantityOfEachDieNumber[0] >= 1 && quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1)
+              || (quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1)
+              || (quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1 && quantityOfEachDieNumber[5] >= 1))
             {
                 smallStraightScore = 30;
             }
-            else
-            {
-                smallStraightScore = 0;
-            }
         }
 
-        public void LargeStraight(Roll roll)
+        public void LargeStraight()
         {
             if ((quantityOfEachDieNumber[0] >= 1 && quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1)
-                || (quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1 && quantityOfEachDieNumber[5] >= 1 && quantityOfEachDieNumber[6] >= 1))
+              || (quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1 && quantityOfEachDieNumber[5] >= 1 && quantityOfEachDieNumber[6] >= 1))
             {
                 largeStraightScore = 40;
             }
-            else
-            {
-                largeStraightScore = 0;
-            }
         }
 
-        public void Chance(Roll roll)
+        public void Chance()
         {
-            Sum(roll);
+            Sum();
             chanceScore = sum;
         }
 
-        public void YahtzeeCombo(Roll roll)
+        public void YahtzeeCombo()
         {
-            for(int index = 0; index < 6; index++)
+            for (int index = 0; index < 6; index++)
             {
-                if(roll.NumberCount[index] == 5)
+                if (quantityOfEachDieNumber[index] == 5)
                 {
                     yahtzeeScore = 50;
                 }
             }
         }
 
-        public void CalcScores(Roll roll)
+        /*public void CalcScores()
         {
-            IterateNumberAmounts(roll);
-            Sum(roll);
+            IterateNumberAmounts();
+            Sum();
+            Bonus();
 
-            OnesThroughSixes(roll);
-            ThreeOfAKind(roll);
-            FourOfAKind(roll);
-            FullHouse(roll);
-            SmallStraight(roll);
-            LargeStraight(roll);
-            Chance(roll);
-            YahtzeeCombo(roll);
-            //FIXME missing bonus
-            //if a combo has alrdy been chosen, set a bool to true
-        }
-
+            Ones();
+            Twos();
+            Threes();
+            Fours();
+            Fives();
+            Sixes();
+            ThreeOfAKind();
+            FourOfAKind();
+            FullHouse();
+            SmallStraight();
+            LargeStraight();
+            Chance();
+            YahtzeeCombo();
+        }*/
     }
 }

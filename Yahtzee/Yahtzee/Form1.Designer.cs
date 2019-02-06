@@ -43,7 +43,6 @@
             this.ChanceCheck = new System.Windows.Forms.CheckBox();
             this.YahtzeeCheck = new System.Windows.Forms.CheckBox();
             this.SumLabel = new System.Windows.Forms.Label();
-            this.BonusLabel = new System.Windows.Forms.Label();
             this.TotalScoreLabel = new System.Windows.Forms.Label();
             this.OnesScore = new System.Windows.Forms.Label();
             this.TwosScore = new System.Windows.Forms.Label();
@@ -70,6 +69,8 @@
             this.holdDieD = new System.Windows.Forms.CheckBox();
             this.holdDieE = new System.Windows.Forms.CheckBox();
             this.InstructionLabel = new System.Windows.Forms.Label();
+            this.BonusCheck = new System.Windows.Forms.CheckBox();
+            this.BonusScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DieA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DieB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DieE)).BeginInit();
@@ -223,22 +224,12 @@
             // SumLabel
             // 
             this.SumLabel.AutoSize = true;
-            this.SumLabel.Location = new System.Drawing.Point(636, 25);
+            this.SumLabel.Location = new System.Drawing.Point(636, 37);
             this.SumLabel.Name = "SumLabel";
             this.SumLabel.Size = new System.Drawing.Size(34, 13);
             this.SumLabel.TabIndex = 14;
             this.SumLabel.Text = "Sum: ";
             this.SumLabel.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // BonusLabel
-            // 
-            this.BonusLabel.AutoSize = true;
-            this.BonusLabel.Location = new System.Drawing.Point(636, 47);
-            this.BonusLabel.Name = "BonusLabel";
-            this.BonusLabel.Size = new System.Drawing.Size(40, 13);
-            this.BonusLabel.TabIndex = 15;
-            this.BonusLabel.Text = "Bonus:";
-            this.BonusLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // TotalScoreLabel
             // 
@@ -303,7 +294,7 @@
             // SixesScore
             // 
             this.SixesScore.AutoSize = true;
-            this.SixesScore.Location = new System.Drawing.Point(539, 143);
+            this.SixesScore.Location = new System.Drawing.Point(539, 145);
             this.SixesScore.Name = "SixesScore";
             this.SixesScore.Size = new System.Drawing.Size(13, 13);
             this.SixesScore.TabIndex = 22;
@@ -343,7 +334,7 @@
             // SmallStraightScore
             // 
             this.SmallStraightScore.AutoSize = true;
-            this.SmallStraightScore.Location = new System.Drawing.Point(539, 235);
+            this.SmallStraightScore.Location = new System.Drawing.Point(539, 237);
             this.SmallStraightScore.Name = "SmallStraightScore";
             this.SmallStraightScore.Size = new System.Drawing.Size(13, 13);
             this.SmallStraightScore.TabIndex = 26;
@@ -353,7 +344,7 @@
             // LargeStraightScore
             // 
             this.LargeStraightScore.AutoSize = true;
-            this.LargeStraightScore.Location = new System.Drawing.Point(539, 259);
+            this.LargeStraightScore.Location = new System.Drawing.Point(539, 260);
             this.LargeStraightScore.Name = "LargeStraightScore";
             this.LargeStraightScore.Size = new System.Drawing.Size(13, 13);
             this.LargeStraightScore.TabIndex = 27;
@@ -363,7 +354,7 @@
             // ChanceScore
             // 
             this.ChanceScore.AutoSize = true;
-            this.ChanceScore.Location = new System.Drawing.Point(539, 282);
+            this.ChanceScore.Location = new System.Drawing.Point(539, 283);
             this.ChanceScore.Name = "ChanceScore";
             this.ChanceScore.Size = new System.Drawing.Size(13, 13);
             this.ChanceScore.TabIndex = 28;
@@ -373,7 +364,7 @@
             // YahtzeeScore
             // 
             this.YahtzeeScore.AutoSize = true;
-            this.YahtzeeScore.Location = new System.Drawing.Point(539, 304);
+            this.YahtzeeScore.Location = new System.Drawing.Point(539, 306);
             this.YahtzeeScore.Name = "YahtzeeScore";
             this.YahtzeeScore.Size = new System.Drawing.Size(13, 13);
             this.YahtzeeScore.TabIndex = 29;
@@ -432,9 +423,9 @@
             // 
             // RollButton
             // 
-            this.RollButton.Location = new System.Drawing.Point(151, 200);
+            this.RollButton.Location = new System.Drawing.Point(118, 200);
             this.RollButton.Name = "RollButton";
-            this.RollButton.Size = new System.Drawing.Size(219, 100);
+            this.RollButton.Size = new System.Drawing.Size(300, 99);
             this.RollButton.TabIndex = 36;
             this.RollButton.Text = "Roll!";
             this.RollButton.UseVisualStyleBackColor = true;
@@ -493,18 +484,40 @@
             // InstructionLabel
             // 
             this.InstructionLabel.AutoSize = true;
-            this.InstructionLabel.Location = new System.Drawing.Point(24, 324);
+            this.InstructionLabel.Location = new System.Drawing.Point(22, 349);
             this.InstructionLabel.Name = "InstructionLabel";
             this.InstructionLabel.Size = new System.Drawing.Size(268, 13);
             this.InstructionLabel.TabIndex = 42;
             this.InstructionLabel.Text = "Press the button to roll! Check the boxes to hold a dice.";
             this.InstructionLabel.Click += new System.EventHandler(this.InstructionLabel_Click);
             // 
+            // BonusCheck
+            // 
+            this.BonusCheck.AutoSize = true;
+            this.BonusCheck.Location = new System.Drawing.Point(558, 328);
+            this.BonusCheck.Name = "BonusCheck";
+            this.BonusCheck.Size = new System.Drawing.Size(56, 17);
+            this.BonusCheck.TabIndex = 43;
+            this.BonusCheck.Text = "Bonus";
+            this.BonusCheck.UseVisualStyleBackColor = true;
+            this.BonusCheck.CheckedChanged += new System.EventHandler(this.BonusCheck_CheckedChanged);
+            // 
+            // BonusScore
+            // 
+            this.BonusScore.AutoSize = true;
+            this.BonusScore.Location = new System.Drawing.Point(539, 329);
+            this.BonusScore.Name = "BonusScore";
+            this.BonusScore.Size = new System.Drawing.Size(13, 13);
+            this.BonusScore.TabIndex = 44;
+            this.BonusScore.Text = "0";
+            // 
             // YahtzeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 406);
+            this.Controls.Add(this.BonusScore);
+            this.Controls.Add(this.BonusCheck);
             this.Controls.Add(this.InstructionLabel);
             this.Controls.Add(this.holdDieE);
             this.Controls.Add(this.holdDieD);
@@ -531,7 +544,6 @@
             this.Controls.Add(this.TwosScore);
             this.Controls.Add(this.OnesScore);
             this.Controls.Add(this.TotalScoreLabel);
-            this.Controls.Add(this.BonusLabel);
             this.Controls.Add(this.SumLabel);
             this.Controls.Add(this.YahtzeeCheck);
             this.Controls.Add(this.ChanceCheck);
@@ -575,7 +587,6 @@
         private System.Windows.Forms.CheckBox ChanceCheck;
         private System.Windows.Forms.CheckBox YahtzeeCheck;
         private System.Windows.Forms.Label SumLabel;
-        private System.Windows.Forms.Label BonusLabel;
         private System.Windows.Forms.Label TotalScoreLabel;
         private System.Windows.Forms.Label OnesScore;
         private System.Windows.Forms.Label TwosScore;
@@ -602,6 +613,8 @@
         private System.Windows.Forms.CheckBox holdDieD;
         private System.Windows.Forms.CheckBox holdDieE;
         private System.Windows.Forms.Label InstructionLabel;
+        private System.Windows.Forms.CheckBox BonusCheck;
+        private System.Windows.Forms.Label BonusScore;
     }
 }
 

@@ -8,38 +8,28 @@ namespace Yahtzee
 {
     public class Roll
     {
-        IRandom randomVal;
+        private IRandom randomVal;
         YahtzeeForm gameInstance;
+        //FIXME: Make this gmae instance not null
 
         public int[] HoldDice = { 0, 0, 0, 0, 0 };
-        public int[] DiceName = { 0, 0, 0, 0, 0 };
-        
-        public Roll()
+        public int[] DiceValues = { 0, 0, 0, 0, 0 };
+        //FIXME: constructor
+
+        public Roll(IRandom randomVal)
         {
-            this.randomVal = randomVal;       
+            this.randomVal = randomVal;
         }
 
         public void RollResults()
         {
-            if (HoldDice[0] == 0)
+            for (int index = 0; index < 5; index++)
             {
-                DiceName[0] = randomVal.Next(1,7);
-            }
-            if (HoldDice[1] == 0)
-            {
-                DiceName[1] = randomVal.Next(1, 7);
-            }
-            if (HoldDice[2] == 0)
-            {
-                DiceName[2] = randomVal.Next(1, 7);
-            }
-            if (HoldDice[3] == 0)
-            {
-                DiceName[3] = randomVal.Next(1, 7);
-            }
-            if (HoldDice[4] == 0)
-            {
-                DiceName[4] = randomVal.Next(1, 7);
+                if(HoldDice[index] == 0)
+                {
+                    //FIXME: .Next doesn't seem to work?
+                    DiceValues[index] = randomVal.Next(1, 7);
+                }
             }
         }   
     }
