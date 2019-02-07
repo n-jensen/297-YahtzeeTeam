@@ -34,7 +34,7 @@ namespace Yahtzee
 
         public Score(Roll roll)
         {
-            this.roll = new Roll(new RandomWrapper());
+            this.roll = roll;
             onesScore = 0;
             twosScore = 0;
             threesScore = 0;
@@ -53,7 +53,7 @@ namespace Yahtzee
             yahtzeeScore = 0;
         }
 
-        public void fillTempDiceValues(Roll roll)
+        public void fillTempDiceValues()
         {
             for (int index = 0; index < 5; index++)
             {
@@ -105,50 +105,29 @@ namespace Yahtzee
 
         public void Bonus()
         {
-            //FIXME: If you already got a yahtzee, get an extra 50 points
             if (yahtzeeScore == 50)
             {
                 bonusScore = 50;
             }
         }
 
-
-        public void Ones()
+        public void OnesThroughSixes()
         {
             onesScore = 0;
-            onesScore = quantityOfEachDieNumber[0] * 1;
-        }
-
-        public void Twos()
-        {
             twosScore = 0;
-            twosScore = quantityOfEachDieNumber[1] * 2;
-        }
-
-        public void Threes()
-        {
             threesScore = 0;
-            threesScore = quantityOfEachDieNumber[2] * 3;
-        }
-
-        public void Fours()
-        {
             foursScore = 0;
-            foursScore = quantityOfEachDieNumber[3] * 4;
-        }
-
-        public void Fives()
-        {
             fivesScore = 0;
-            fivesScore = quantityOfEachDieNumber[4] * 5;
-        }
-
-        public void Sixes()
-        {
             sixesScore = 0;
-            sixesScore = quantityOfEachDieNumber[5] * 6;
-        }
 
+            onesScore = quantityOfEachDieNumber[0] * 1;
+            twosScore = quantityOfEachDieNumber[1] * 2;
+            threesScore = quantityOfEachDieNumber[2] * 3;
+            foursScore = quantityOfEachDieNumber[3] * 4;
+            fivesScore = quantityOfEachDieNumber[4] * 5;
+            sixesScore = quantityOfEachDieNumber[5] * 6;
+
+        }
 
         public void ThreeOfAKind()
         {
@@ -237,18 +216,15 @@ namespace Yahtzee
             }
         }
 
-        public void CalcScores(Roll roll)
+        public void CalcScores()
         {
+            fillTempDiceValues();
             IterateNumberAmounts();
             Sum();
             Bonus();
 
-            Ones();
-            Twos();
-            Threes();
-            Fours();
-            Fives();
-            Sixes();
+            OnesThroughSixes();
+            
             ThreeOfAKind();
             FourOfAKind();
             FullHouse();

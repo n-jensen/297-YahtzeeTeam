@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Yahtzee;
 
-namespace Roll.Tests
+namespace Yahtzee.Tests
 {
     public class AccessRandomInterface : IRandom
     {
-        List<int> notRandomNumbers;
+        int[] notRandomNumbers;
         int currentIndex;
-        public AccessRandomInterface(List<int> notRandomNumbers)
+        public AccessRandomInterface(int[] notRandomNumbers)
         {
             this.notRandomNumbers = notRandomNumbers;
             currentIndex = 0;

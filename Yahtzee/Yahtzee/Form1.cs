@@ -329,8 +329,8 @@ namespace Yahtzee
                     KeepRolling();
                     buttonPushCounter--;
 
-                    score.fillTempDiceValues(roll);
-                    score.CalcScores(roll);
+                    score.fillTempDiceValues();
+                    score.CalcScores();
                     GetScoreNums(score);
 
                     SumLabel.Text = "Sum: " + score.sum;
@@ -340,8 +340,8 @@ namespace Yahtzee
                 {
                     RollButton.Text = "Out of rolls! Choose one empty combination on the list.";
 
-                    score.fillTempDiceValues(roll);
-                    score.CalcScores(roll);
+                    score.fillTempDiceValues();
+                    score.CalcScores();
                     GetScoreNums(score);
 
                     TotalScoreLabel.Text = "Total Score: " + score.totalScore;

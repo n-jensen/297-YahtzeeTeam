@@ -1,0 +1,17 @@
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\YahtzeeTests.dll
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\YahtzeeTests.pdb
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Yahtzee.exe
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Yahtzee.pdb
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Yahtzee.exe.config
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\obj\Debug\YahtzeeTests.csprojAssemblyReference.cache
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\obj\Debug\YahtzeeTests.csproj.CoreCompileInputs.cache
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\obj\Debug\YahtzeeTests.csproj.CopyComplete
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\obj\Debug\YahtzeeTests.dll
+C:\Users\Noel\source\VS17Projects\Yahtzee\YahtzeeTests\obj\Debug\YahtzeeTests.pdb
