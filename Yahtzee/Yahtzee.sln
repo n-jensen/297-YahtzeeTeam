@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yahtzee", "Yahtzee\Yahtzee.csproj", "{4F7A5595-93D8-4CEF-A0B8-08D0F87D0B94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YahtzeeTests", "YahtzeeTests\YahtzeeTests.csproj", "{8F5B4C94-AA8F-4D6A-B657-02A988327895}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4F7A5595-93D8-4CEF-A0B8-08D0F87D0B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F7A5595-93D8-4CEF-A0B8-08D0F87D0B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F7A5595-93D8-4CEF-A0B8-08D0F87D0B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5B4C94-AA8F-4D6A-B657-02A988327895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5B4C94-AA8F-4D6A-B657-02A988327895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5B4C94-AA8F-4D6A-B657-02A988327895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5B4C94-AA8F-4D6A-B657-02A988327895}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

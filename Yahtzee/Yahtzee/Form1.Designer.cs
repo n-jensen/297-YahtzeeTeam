@@ -71,6 +71,8 @@
             this.InstructionLabel = new System.Windows.Forms.Label();
             this.BonusCheck = new System.Windows.Forms.CheckBox();
             this.BonusScore = new System.Windows.Forms.Label();
+            this.InstructionLabel2 = new System.Windows.Forms.Label();
+            this.EndButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DieA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DieB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DieE)).BeginInit();
@@ -427,7 +429,7 @@
             this.RollButton.Name = "RollButton";
             this.RollButton.Size = new System.Drawing.Size(300, 99);
             this.RollButton.TabIndex = 36;
-            this.RollButton.Text = "Roll!";
+            this.RollButton.Text = "Roll to Start!";
             this.RollButton.UseVisualStyleBackColor = true;
             this.RollButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -486,9 +488,9 @@
             this.InstructionLabel.AutoSize = true;
             this.InstructionLabel.Location = new System.Drawing.Point(22, 349);
             this.InstructionLabel.Name = "InstructionLabel";
-            this.InstructionLabel.Size = new System.Drawing.Size(268, 13);
+            this.InstructionLabel.Size = new System.Drawing.Size(291, 13);
             this.InstructionLabel.TabIndex = 42;
-            this.InstructionLabel.Text = "Press the button to roll! Check the boxes to hold a dice.";
+            this.InstructionLabel.Text = "Press the button to roll! You get a max of three rolls per turn. ";
             this.InstructionLabel.Click += new System.EventHandler(this.InstructionLabel_Click);
             // 
             // BonusCheck
@@ -511,11 +513,34 @@
             this.BonusScore.TabIndex = 44;
             this.BonusScore.Text = "0";
             // 
+            // InstructionLabel2
+            // 
+            this.InstructionLabel2.AutoSize = true;
+            this.InstructionLabel2.Location = new System.Drawing.Point(22, 371);
+            this.InstructionLabel2.Name = "InstructionLabel2";
+            this.InstructionLabel2.Size = new System.Drawing.Size(393, 13);
+            this.InstructionLabel2.TabIndex = 45;
+            this.InstructionLabel2.Text = "Check the boxes to hold a dice. Check all dice and press the button to end a turn" +
+    ".";
+            this.InstructionLabel2.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // EndButton
+            // 
+            this.EndButton.Location = new System.Drawing.Point(528, 351);
+            this.EndButton.Name = "EndButton";
+            this.EndButton.Size = new System.Drawing.Size(168, 43);
+            this.EndButton.TabIndex = 46;
+            this.EndButton.Text = "Press to end game if no moves are left. :(";
+            this.EndButton.UseVisualStyleBackColor = true;
+            this.EndButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // YahtzeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 406);
+            this.Controls.Add(this.EndButton);
+            this.Controls.Add(this.InstructionLabel2);
             this.Controls.Add(this.BonusScore);
             this.Controls.Add(this.BonusCheck);
             this.Controls.Add(this.InstructionLabel);
@@ -615,6 +640,8 @@
         private System.Windows.Forms.Label InstructionLabel;
         private System.Windows.Forms.CheckBox BonusCheck;
         private System.Windows.Forms.Label BonusScore;
+        private System.Windows.Forms.Label InstructionLabel2;
+        private System.Windows.Forms.Button EndButton;
     }
 }
 

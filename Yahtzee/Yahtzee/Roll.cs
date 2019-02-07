@@ -14,6 +14,7 @@ namespace Yahtzee
 
         public int[] HoldDice = { 0, 0, 0, 0, 0 };
         public int[] DiceValues = { 0, 0, 0, 0, 0 };
+
         //FIXME: constructor
 
         public Roll(IRandom randomVal)

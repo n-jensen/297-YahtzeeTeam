@@ -32,8 +32,9 @@ namespace Yahtzee
         public int chanceScore;
         public int yahtzeeScore;
 
-        public Score()
+        public Score(Roll roll)
         {
+            this.roll = new Roll(new RandomWrapper());
             onesScore = 0;
             twosScore = 0;
             threesScore = 0;
@@ -50,13 +51,15 @@ namespace Yahtzee
             largeStraightScore = 0;
             chanceScore = 0;
             yahtzeeScore = 0;
-            fillTempDiceValues(roll);
-            IterateNumberAmounts();
         }
 
         public void fillTempDiceValues(Roll roll)
         {
-            foreach (int index in roll.DiceValues)
+            for (int index = 0; index < 5; index++)
+            {
+                tempDiceValues[index] = 0;
+            }
+            for (int index = 0; index < 5; index++)
             {
                 tempDiceValues[index] = roll.DiceValues[index];
             }
@@ -64,9 +67,25 @@ namespace Yahtzee
 
         public void IterateNumberAmounts()
         {
+            for (int index = 0; index < 6; index++)
+            {
+                quantityOfEachDieNumber[index] = 0;
+            }
             for (int index = 0; index < 5; index++)
             {
-                quantityOfEachDieNumber[tempDiceValues[index] - 1]++;
+                //quantityOfEachDieNumber[tempDiceValues[index]]++;
+                if (tempDiceValues[index] == 1)
+                    quantityOfEachDieNumber[0]++;
+                else if (tempDiceValues[index] == 2)
+                    quantityOfEachDieNumber[1]++;
+                else if (tempDiceValues[index] == 3)
+                    quantityOfEachDieNumber[2]++;
+                else if (tempDiceValues[index] == 4)
+                    quantityOfEachDieNumber[3]++;
+                else if (tempDiceValues[index] == 5)
+                    quantityOfEachDieNumber[4]++;
+                else if (tempDiceValues[index] == 6)
+                    quantityOfEachDieNumber[5]++;
             }
         }
 
@@ -96,37 +115,44 @@ namespace Yahtzee
 
         public void Ones()
         {
+            onesScore = 0;
             onesScore = quantityOfEachDieNumber[0] * 1;
         }
 
         public void Twos()
         {
+            twosScore = 0;
             twosScore = quantityOfEachDieNumber[1] * 2;
         }
 
         public void Threes()
         {
+            threesScore = 0;
             threesScore = quantityOfEachDieNumber[2] * 3;
         }
 
         public void Fours()
         {
+            foursScore = 0;
             foursScore = quantityOfEachDieNumber[3] * 4;
         }
 
         public void Fives()
         {
-           fivesScore = quantityOfEachDieNumber[4] * 5;
+            fivesScore = 0;
+            fivesScore = quantityOfEachDieNumber[4] * 5;
         }
 
         public void Sixes()
         {
+            sixesScore = 0;
             sixesScore = quantityOfEachDieNumber[5] * 6;
         }
 
 
         public void ThreeOfAKind()
         {
+            threeKindScore = 0;
             for (int index = 0; index < 6; index++)
             {
                 if (quantityOfEachDieNumber[index] == 3)
@@ -139,6 +165,7 @@ namespace Yahtzee
 
         public void FourOfAKind()
         {
+            fourKindScore = 0;
             for (int index = 0; index < 6; index++)
             {
                 if (quantityOfEachDieNumber[index] == 4)
@@ -151,6 +178,7 @@ namespace Yahtzee
 
         public void FullHouse()
         {
+            fullHouseScore = 0;
             int pairs = 0;
             for (int index = 0; index < 6; index++)
             {
@@ -171,6 +199,7 @@ namespace Yahtzee
 
         public void SmallStraight()
         {
+            smallStraightScore = 0;
             if ((quantityOfEachDieNumber[0] >= 1 && quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1)
               || (quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1)
               || (quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1 && quantityOfEachDieNumber[5] >= 1))
@@ -181,6 +210,7 @@ namespace Yahtzee
 
         public void LargeStraight()
         {
+            largeStraightScore = 0;
             if ((quantityOfEachDieNumber[0] >= 1 && quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1)
               || (quantityOfEachDieNumber[1] >= 1 && quantityOfEachDieNumber[2] >= 1 && quantityOfEachDieNumber[3] >= 1 && quantityOfEachDieNumber[4] >= 1 && quantityOfEachDieNumber[5] >= 1 && quantityOfEachDieNumber[6] >= 1))
             {
@@ -190,12 +220,14 @@ namespace Yahtzee
 
         public void Chance()
         {
+            chanceScore = 0;
             Sum();
             chanceScore = sum;
         }
 
         public void YahtzeeCombo()
         {
+            yahtzeeScore = 0;
             for (int index = 0; index < 6; index++)
             {
                 if (quantityOfEachDieNumber[index] == 5)
@@ -205,7 +237,7 @@ namespace Yahtzee
             }
         }
 
-        /*public void CalcScores()
+        public void CalcScores(Roll roll)
         {
             IterateNumberAmounts();
             Sum();
@@ -224,6 +256,6 @@ namespace Yahtzee
             LargeStraight();
             Chance();
             YahtzeeCombo();
-        }*/
+        }
     }
 }
